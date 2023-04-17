@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "GA2cHmKI79QXLJ8yiEeGYJBCBDy9bJx+Dkgzkgrvwqc=",
+  "Source": "steamy.api",
+  "BasePath": "_content/steamy.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
