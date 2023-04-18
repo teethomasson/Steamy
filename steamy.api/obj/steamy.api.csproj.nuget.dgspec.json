@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[7.0.4, )"
             },
+            "SteamWebAPI2": {
+              "target": "Package",
+              "version": "[4.4.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
