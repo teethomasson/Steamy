@@ -31,3 +31,7 @@ C:\Users\Scurv\source\repos\Steamy\steamy.api\obj\Debug\net7.0\refint\steamy.api
 C:\Users\Scurv\source\repos\Steamy\steamy.api\obj\Debug\net7.0\steamy.api.pdb
 C:\Users\Scurv\source\repos\Steamy\steamy.api\obj\Debug\net7.0\steamy.api.genruntimeconfig.cache
 C:\Users\Scurv\source\repos\Steamy\steamy.api\obj\Debug\net7.0\ref\steamy.api.dll
+C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\Steam.Models.dll
+C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\SteamWebAPI2.dll
