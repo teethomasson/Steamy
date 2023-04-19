@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace steamy.api.Controllers
 {
     [ApiController]
-[Route("[controller]")]
+    [Route("[controller]")]
 public class SteamUserController : ControllerBase
 {
         private readonly SteamService _steamService;

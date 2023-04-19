@@ -1,0 +1,41 @@
+<div class="search-container">
+    <div class="search-content">
+      <h1 class="display-4 mb-4 text-center">Search Steam Profiles</h1>
+      <form>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Steam name or ID"
+            [(ngModel)]="searchQuery"
+            name="searchQuery"
+          />
+          <button class="btn btn-primary" type="button" (click)="onSearch()">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="steam"></div>
+  <!-- User Profile Card -->
+<div *ngIf="userProfile" class="card mt-4">
+    <div class="card-header">
+      {{ userProfile.personaname }}
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <img [src]="userProfile.avatarfull" alt="Profile picture" class="img-thumbnail" />
+        </div>
+        <div class="col-md-8">
+          <p *ngIf="userProfile.locountrycode && userProfile.locityid">
+            Country: {{ userProfile.locountrycode }}, City: {{ userProfile.locityid }}
+          </p>
+          <p>Account created: {{ userProfile.timecreated | date }}</p>
+          <p>Last logged on: {{ userProfile.lastlogoff | date }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="userProfile.gameextrainfo" class="card-footer">
+      Currently playing: {{ userProfile.gameextrainfo }}
+    </div>
+  </div>
