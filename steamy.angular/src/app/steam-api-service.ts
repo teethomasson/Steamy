@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SteamApiService {
-  private apiUrl = 'http://localhost:5140'; // Replace with your .NET Web API base URL
+  private apiUrl = 'http://localhost:5140'; 
 
   constructor(private http: HttpClient) { }
 
