@@ -15,4 +15,10 @@ export class SteamApiService {
     const url = `${this.apiUrl}/SteamUser/profile/${searchQuery}`;
     return this.http.get<any>(url);
   }
+
+  resolveVanityUrl(vanityUrl: string): Observable<{ steamId: string }> {
+    return this.http.get<{ steamId: string }>(`${this.apiUrl}/SteamUser/vanity/${vanityUrl}`);
+  }
+  
+  
 }

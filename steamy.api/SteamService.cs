@@ -45,10 +45,11 @@ namespace steamy.api
 
         public async Task<dynamic> GetUserProfileAsync(ulong steamId)
         {
-        var steamUser = _steamWebInterfaceFactory.CreateSteamWebInterface<SteamUser>(new HttpClient());
-        var profile = await steamUser.GetPlayerSummariesAsync(new List<ulong>{steamId});
-        return profile.Data;
+            var steamUser = _steamWebInterfaceFactory.CreateSteamWebInterface<SteamUser>(new HttpClient());
+            var profile = await steamUser.GetPlayerSummariesAsync(new List<ulong> { steamId });
+            return profile.Data.FirstOrDefault();
         }
+
     }
 
 }
