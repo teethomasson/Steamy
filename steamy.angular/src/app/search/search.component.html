@@ -17,25 +17,21 @@
   </div>
   <div class="steam"></div>
   <!-- User Profile Card -->
-<div *ngIf="userProfile" class="card mt-4">
-    <div class="card-header">
-      {{ userProfile.personaname }}
-    </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-4">
-          <img [src]="userProfile.avatarfull" alt="Profile picture" class="img-thumbnail" />
-        </div>
-        <div class="col-md-8">
-          <p *ngIf="userProfile.locountrycode && userProfile.locityid">
-            Country: {{ userProfile.locountrycode }}, City: {{ userProfile.locityid }}
-          </p>
-          <p>Account created: {{ userProfile.timecreated | date }}</p>
-          <p>Last logged on: {{ userProfile.lastlogoff | date }}</p>
-        </div>
+  <div *ngIf="userProfile">
+    <div class="card">
+      <div class="card-header">
+        {{ userProfile.personaname }}
+      </div>
+      <img [src]="userProfile.avatarfull" alt="Profile Image" class="card-img-top">
+      <div class="card-body">
+        <p *ngIf="userProfile.loccountrycode">Country: {{ userProfile.loccountrycode }}</p>
+        <p *ngIf="userProfile.loccityid">City: {{ userProfile.loccityid }}</p>
+        <p>Account Created: {{ userProfile.timecreated * 1000 | date }}</p>
+        <p>Last Logged On: {{ userProfile.lastlogoff * 1000 | date }}</p>
+      </div>
+      <div class="card-footer" *ngIf="userProfile.gameextrainfo">
+        Currently Playing: {{ userProfile.gameextrainfo }}
       </div>
     </div>
-    <div *ngIf="userProfile.gameextrainfo" class="card-footer">
-      Currently playing: {{ userProfile.gameextrainfo }}
-    </div>
   </div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
