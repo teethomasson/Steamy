@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background-image: radial-gradient(circle, #5bb2c6, #086d86);
+    background-image: radial-gradient(ellipse at top, #0e4c5a, #01151b);
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;

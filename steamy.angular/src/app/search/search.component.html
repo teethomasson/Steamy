@@ -1,6 +1,6 @@
 <div class="search-container">
     <div class="search-content">
-      <h1 class="display-4 mb-4 text-center">Steamy</h1>
+      <h1 class="display-4 mb-4 text-center neon">Steamy</h1>
       <form>
         <div class="input-group mb-3">
           <input
@@ -13,25 +13,34 @@
           <button class="btn btn-primary" type="button" (click)="onSearch()">Search</button>
         </div>
       </form>
+      <div class="card-container text-center">
+        <ng-container *ngIf="userProfile">
+          <div>
+            <div class="card m-2 grow">
+              <img [src]="userProfile.avatarMediumUrl" alt="Profile Image" class="card-img-top profileimg">
+              <div class="card-header">
+                <p>{{ userProfile.nickname }}</p>
+              </div>
+              <div class="card-body">
+                <p *ngIf="userProfile.countryCode">Country: {{ userProfile.countryCode }}</p>
+                <p *ngIf="userProfile.loccityid">City: {{ userProfile.loccityid }}</p>
+                <p>Account Created: {{ userProfile.accountCreatedDate | date}}</p>
+                <p>Last Logged On: {{ userProfile.lastLoggedOffDate | date }}</p>
+              </div>
+              <div class="card-footer" *ngIf="userProfile.playingGameId">
+                Currently Playing: {{ userProfile.playingGameName }}
+              </div>
+            </div>
+          </div>
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        </ng-container>
+      </div>
     </div>
   </div>
-  <div class="steam"></div>
+  <div class="steam">
+    
+  </div>
   <!-- User Profile Card -->
-  <div *ngIf="userProfile">
-    <div class="card">
-      <div class="card-header">
-        {{ userProfile.personaname }}
-      </div>
-      <img [src]="userProfile.avatarfull" alt="Profile Image" class="card-img-top">
-      <div class="card-body">
-        <p *ngIf="userProfile.loccountrycode">Country: {{ userProfile.loccountrycode }}</p>
-        <p *ngIf="userProfile.loccityid">City: {{ userProfile.loccityid }}</p>
-        <p>Account Created: {{ userProfile.timecreated * 1000 | date }}</p>
-        <p>Last Logged On: {{ userProfile.lastlogoff * 1000 | date }}</p>
-      </div>
-      <div class="card-footer" *ngIf="userProfile.gameextrainfo">
-        Currently Playing: {{ userProfile.gameextrainfo }}
-      </div>
-    </div>
-  </div>
-  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+  
+  

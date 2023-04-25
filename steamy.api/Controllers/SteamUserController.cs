@@ -31,30 +31,27 @@ public class SteamUserController : ControllerBase
             }
         }
 
-        [HttpGet("profile/{steamIdOrUsername}")]
-        public async Task<ActionResult<dynamic>> GetUserProfileAsync(string steamIdOrUsername)
+        [HttpGet("profile/{steamIdOrVanityUrl}")]
+    public async Task<IActionResult> GetUserProfile(string steamIdOrVanityUrl)
+    {
+        try
         {
-            try
+            ulong steamId;
+            if (!ulong.TryParse(steamIdOrVanityUrl, out steamId))
             {
-                ulong steamId;
-                if (ulong.TryParse(steamIdOrUsername, out ulong parsedSteamId))
-                {
-                    steamId = parsedSteamId;
-                }
-                else
-                {
-                    steamId = await _steamService.ResolveVanityUrlAsync(steamIdOrUsername);
-                }
+                steamId = await _steamService.ResolveVanityUrlAsync(steamIdOrVanityUrl);
+            }
 
-                var profile = await _steamService.GetUserProfileAsync(steamId);
-                return Ok(profile);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
+            var profiles = await _steamService.GetUserProfileAsync(steamId);
+            return Ok(profiles);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = ex.Message });
         }
     }
-
-
+    
 }
+}
+
+

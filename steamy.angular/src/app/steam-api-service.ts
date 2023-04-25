@@ -11,10 +11,12 @@ export class SteamApiService {
 
   constructor(private http: HttpClient) { }
 
-  getUserProfile(searchQuery: string): Observable<any> {
-    const url = `${this.apiUrl}/SteamUser/profile/${searchQuery}`;
-    return this.http.get<any>(url);
+  // Change the parameter type to an array of strings
+  getUserProfile(steamIdOrVanityUrl: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/SteamUser/profile/${steamIdOrVanityUrl}`);
   }
+  
+
 
   resolveVanityUrl(vanityUrl: string): Observable<{ steamId: string }> {
     return this.http.get<{ steamId: string }>(`${this.apiUrl}/SteamUser/vanity/${vanityUrl}`);

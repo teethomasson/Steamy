@@ -17,25 +17,21 @@ export class SearchComponent {
   } 
 
   onSearch(): void {
-    this.steamApiService.resolveVanityUrl(this.searchQuery).subscribe(
-      (response: { steamId: string }) => {
-        this.steamApiService.getUserProfile(response.steamId).subscribe(
-          (data) => {
-            this.userProfile = data;
-            this.errorMessage = null;
-          },
-          (error) => {
-            console.error('Error fetching user profile:', error);
-            this.errorMessage = 'The entered value for the Vanity URL could not be resolved to a Steam ID.';
-          }
-        );
+    this.steamApiService.getUserProfile(this.searchQuery).subscribe(
+      (data) => {
+        this.userProfile = data;
+        this.errorMessage = null;
+        console.log(data);
       },
       (error) => {
-        console.error('Error resolving vanity URL:', error);
-        this.errorMessage = 'The entered value for the Vanity URL could not be resolved to a Steam ID.';
+        console.error('Error fetching user profile:', error);
+        this.errorMessage = 'The entered value for the Vanity URL or Steam ID could not be resolved to a Steam profile.';
       }
     );
   }
+  
+  
+
   
   
 }
