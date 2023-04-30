@@ -1,12 +1,4 @@
 /* search.component.css */
-.neon {
-  color: rgba(255, 255, 255, 0);
-  text-shadow:
-    0 0 2px #ffffff,
-    0 0 15px #70ffff,
-    0 0 20px #46fdff,
-    0 0 40px #46fdff;
-}
 
 .profileimg {
   border: solid 2px;
@@ -72,4 +64,16 @@
   .grow:hover {
     transform: scale(1.1);
   }
+
+  .effect-01 {
+    font-weight: 700;
+    font-size: 74px;
+    text-shadow: 	
+      1px 1px 0px rgba(190,190,190,1),
+      2px 2px 0px rgba(190,190,190,.9),
+      3px 3px 0px rgba(190,190,190,.7),
+      4px 4px 0px rgba(190,190,190,.5),
+      10px 10px 20px rgba(0,0,0,.8);
+  }
+
   
