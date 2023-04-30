@@ -1,0 +1,79 @@
+/* search.component.css */
+
+.profileimg {
+  border: solid 2px;
+  border-color: black;
+  border-radius: 3px;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .search-content {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .input-group {
+    width: 100%;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 48px;
+ 
+  }
+  .card {
+    background-color: rgb(215, 221, 225);
+    padding: 25px;
+    border-color: black;
+    border: solid 5px;
+    border-radius: 5px;
+  }
+  .card-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  .card-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+
+  .grow {
+    display: inline-block;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+  .grow:hover {
+    transform: scale(1.1);
+  }
+
+  .effect-01 {
+    font-weight: 700;
+    font-size: 74px;
+    text-shadow: 	
+      1px 1px 0px rgba(190,190,190,1),
+      2px 2px 0px rgba(190,190,190,.9),
+      3px 3px 0px rgba(190,190,190,.7),
+      4px 4px 0px rgba(190,190,190,.5),
+      10px 10px 20px rgba(0,0,0,.8);
+  }
+
+  

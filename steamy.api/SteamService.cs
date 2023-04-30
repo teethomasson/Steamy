@@ -2,6 +2,8 @@ using SteamWebAPI2.Interfaces;
 using SteamWebAPI2.Utilities;
 using Microsoft.Extensions.Caching.Memory;
 using System.Threading.Tasks;
+using Steam.Models.SteamCommunity;
+
 
 namespace steamy.api
 {
@@ -45,9 +47,62 @@ namespace steamy.api
 
         public async Task<dynamic> GetUserProfileAsync(ulong steamId)
         {
-        var steamUser = _steamWebInterfaceFactory.CreateSteamWebInterface<SteamUser>(new HttpClient());
-        var profile = await steamUser.GetPlayerSummariesAsync(new List<ulong>{steamId});
-        return profile.Data;
+            var steamUser = _steamWebInterfaceFactory.CreateSteamWebInterface<SteamUser>(new HttpClient());
+            var profile = await steamUser.GetPlayerSummariesAsync(new List<ulong> { steamId });
+            if(profile!=null){
+                return profile.Data.First();
+            }
+            else{
+                throw new Exception("Unable to Retrieve User Profile");
+            }
         }
+
+
+        public async Task<IEnumerable<OwnedGameModel>> GetTopGamesByPlaytimeAsync(ulong steamId, int count = 15)
+        {
+            var playerService = _steamWebInterfaceFactory.CreateSteamWebInterface<PlayerService>(new HttpClient());
+            var ownedGamesResponse = await playerService.GetOwnedGamesAsync(steamId, includeAppInfo: true);
+    
+            var topGames = ownedGamesResponse.Data.OwnedGames
+                .Where(game => game.PlaytimeForever > TimeSpan.FromMinutes(0))
+                .OrderByDescending(game => game.PlaytimeForever)
+                .Take(count)
+                .ToList();
+
+            return (IEnumerable<OwnedGameModel>)topGames;
+        }
+
+        public async Task<IEnumerable<OwnedGameModel>> GetAllOwnedGames(ulong steamId)
+        {
+            var playerService = _steamWebInterfaceFactory.CreateSteamWebInterface<PlayerService>(new HttpClient());
+            var ownedGamesReponse = await playerService.GetOwnedGamesAsync(steamId, includeAppInfo:true);
+
+            var ownedGames = ownedGamesReponse.Data.OwnedGames.ToList();
+            return (IEnumerable<OwnedGameModel>)ownedGames;
+        }
+
+        public async Task<uint> GetSteamLevel(ulong steamId)
+        {
+            var playerService = _steamWebInterfaceFactory.CreateSteamWebInterface<PlayerService>(new HttpClient());
+            var steamLevel = await playerService.GetSteamLevelAsync(steamId);
+
+            return steamLevel.Data.GetValueOrDefault();
+        }
+
+        public async Task<IEnumerable<RecentlyPlayedGameModel>> GetRecentlyPlayedGames(ulong steamId)
+        {
+            var playerService = _steamWebInterfaceFactory.CreateSteamWebInterface<PlayerService>(new HttpClient());
+            var recentlyPlayedGamesResponse = await playerService.GetRecentlyPlayedGamesAsync(steamId);
+
+            if (recentlyPlayedGamesResponse != null && recentlyPlayedGamesResponse.Data != null)
+            {
+                return (IEnumerable<RecentlyPlayedGameModel>)recentlyPlayedGamesResponse.Data;
+            }
+
+            throw new Exception("Failed to retrieve recently played games.");
+        }
+
+
     }
+
 }

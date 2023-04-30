@@ -10,8 +10,19 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton( x => new SteamWebInterfaceFactory(builder.Configuration["App:ApiKey"]));
 builder.Services.AddSingleton<steamy.api.SteamService>();
 builder.Services.AddMemoryCache();
-var app = builder.Build();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200") // Angular app URL
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 
+var app = builder.Build();
+app.UseCors();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
