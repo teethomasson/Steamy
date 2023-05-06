@@ -11,9 +11,9 @@ namespace steamy.api.Controllers
     [Route("[controller]")]
 public class SteamUserController : ControllerBase
 {
-    private readonly SteamService _steamService;
+    private readonly SteamUserService _steamService;
 
-    public SteamUserController(SteamService steamService)
+    public SteamUserController(SteamUserService steamService)
     {
         _steamService = steamService;
     }
@@ -32,7 +32,7 @@ public class SteamUserController : ControllerBase
         }
     }
 
-        [HttpGet("profile/{steamIdOrVanityUrl}")]
+    [HttpGet("profile/{steamIdOrVanityUrl}")]
     public async Task<IActionResult> GetUserProfile(string steamIdOrVanityUrl)
     {
         try
@@ -51,7 +51,7 @@ public class SteamUserController : ControllerBase
             return BadRequest(new { message = ex.Message });
         }
     }
-
+    [HttpGet("profile/topGames/{steamId}/{count}")]
     public async Task<ActionResult<IEnumerable<OwnedGameModel>>> GetTopGamesByPlaytime(ulong steamId, int count  =15)
     {
         try
@@ -64,7 +64,7 @@ public class SteamUserController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-
+    [HttpGet("profile/recentlyPlayed/{steamId}")]
     public async Task<ActionResult<IEnumerable<RecentlyPlayedGameModel>>> GetRecentlyPlayedGames(ulong steamId)
     {
         try
@@ -77,7 +77,7 @@ public class SteamUserController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-
+    [HttpGet("profile/allGames/{steamId}")]
     public async Task<ActionResult<IEnumerable<OwnedGameModel>>> GetAllOwnedGames(ulong steamId)
     {
         try
@@ -90,7 +90,7 @@ public class SteamUserController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-
+    [HttpGet("profile/steamLevel/{steamId}")]
     public async Task<ActionResult<int>> GetSteamLevel(ulong steamId)
     {
         try
@@ -101,6 +101,20 @@ public class SteamUserController : ControllerBase
         catch (Exception e)
         {
             return BadRequest(e.Message);
+        }
+    }
+
+    [HttpGet("flagemoji/{countryCode}")]
+    public IActionResult GetFlagEmoji(string countryCode)
+    {
+        try
+        {
+            string flagEmoji = _steamService.CountryCodeToFlagEmoji(countryCode);
+            return Ok(flagEmoji);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new { error = e.Message });
         }
     }
 

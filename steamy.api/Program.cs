@@ -1,4 +1,9 @@
 using SteamWebAPI2.Utilities;
+using Microsoft.EntityFrameworkCore;
+using steamy.api.Models;
+using steamy.api.Data;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,7 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton( x => new SteamWebInterfaceFactory(builder.Configuration["App:ApiKey"]));
-builder.Services.AddSingleton<steamy.api.SteamService>();
+builder.Services.AddDbContext<UserDbContext>(options =>
+        options.UseSqlServer(builder.Configuration["App:DBKey"]));
+builder.Services.AddSingleton<steamy.api.SteamUserService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddCors(options =>
 {
@@ -21,7 +28,24 @@ builder.Services.AddCors(options =>
         });
 });
 
+// Add Identity and configure options
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<UserDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.Configure<IdentityOptions>(options =>
+    {
+        // Configure password requirements
+        options.Password.RequireDigit = true;
+        options.Password.RequiredLength = 8;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = true;
+        options.Password.RequireLowercase = true;
+    });
+
+
 var app = builder.Build();
+
 app.UseCors();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

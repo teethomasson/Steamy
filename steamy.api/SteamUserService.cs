@@ -7,12 +7,12 @@ using Steam.Models.SteamCommunity;
 
 namespace steamy.api
 {
-    public class SteamService
+    public class SteamUserService
     {
         private readonly SteamWebInterfaceFactory _steamWebInterfaceFactory;
         private readonly IMemoryCache _cache;
 
-        public SteamService(SteamWebInterfaceFactory steamWebInterfaceFactory, IMemoryCache memoryCache)
+        public SteamUserService(SteamWebInterfaceFactory steamWebInterfaceFactory, IMemoryCache memoryCache)
         {
             _steamWebInterfaceFactory = steamWebInterfaceFactory;
             _cache = memoryCache;
@@ -102,6 +102,20 @@ namespace steamy.api
             throw new Exception("Failed to retrieve recently played games.");
         }
 
+        public string CountryCodeToFlagEmoji(string countryCode)
+        {
+            if (string.IsNullOrEmpty(countryCode) || countryCode.Length != 2)
+            {
+                throw new ArgumentException("Country code must be a 2-letter ISO 3166-1 alpha-2 code");
+            }
+
+            countryCode = countryCode.ToUpperInvariant();
+            int firstLetterOffset = countryCode[0] - 'A' + 0x1F1E6;
+            int secondLetterOffset = countryCode[1] - 'A' + 0x1F1E6;
+
+            char[] emoji = new char[] { (char)firstLetterOffset, (char)secondLetterOffset };
+            return new string(emoji);
+        }
 
     }
 

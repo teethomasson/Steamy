@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Sign Up</h2>
+<mat-dialog-content class="signup">
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" id="email" required aria-label="Email">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" id="password" required aria-label="Password">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" id="confirm-password" required aria-label="Confirm Password">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary">Sign Up</button>
+</mat-dialog-actions>
