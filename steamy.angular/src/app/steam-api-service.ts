@@ -22,5 +22,9 @@ export class SteamApiService {
     return this.http.get<{ steamId: string }>(`${this.apiUrl}/SteamUser/vanity/${vanityUrl}`);
   }
   
+  getFlagEmoji(countryCode: string): string {
+    return countryCode.toLowerCase();
+  }
+  
   
 }

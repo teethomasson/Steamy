@@ -22,7 +22,10 @@
                 <p>{{ userProfile.nickname }}</p>
               </div>
               <div class="card-body">
-                <p *ngIf="userProfile.countryCode">Country: {{ userProfile.countryCode }}</p>
+                <p *ngIf="userProfile.countryCode">
+                  Country:
+                  <span class="emoji" [innerHTML]=flagCountryCode></span>
+                </p>
                 <p *ngIf="userProfile.loccityid">City: {{ userProfile.loccityid }}</p>
                 <p>Account Created: {{ userProfile.accountCreatedDate | date}}</p>
                 <p>Last Logged On: {{ userProfile.lastLoggedOffDate | date }}</p>
