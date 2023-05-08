@@ -1,21 +1,32 @@
 <h2 mat-dialog-title>Sign Up</h2>
 <mat-dialog-content class="signup">
-  <form>
+  <form [formGroup]="signUpForm">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput type="text" formControlName="firstName" id="first-name" required aria-label="First Name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput type="text" formControlName="lastName" id="last-name" required aria-label="Last Name">
+    </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput type="email" id="email" required aria-label="Email">
+      <input matInput type="email" formControlName="email" required>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Password</mat-label>
-      <input matInput type="password" id="password" required aria-label="Password">
+      <input matInput type="password" formControlName="password" required>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Confirm Password</mat-label>
-      <input matInput type="password" id="confirm-password" required aria-label="Confirm Password">
+      <input matInput type="password" formControlName="confirmPassword" required>
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary">Sign Up</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Sign Up</button>
 </mat-dialog-actions>
+<div *ngIf="errorMessages.length > 0" class="error-messages">
+  <p *ngFor="let message of errorMessages">{{ message }}</p>
+</div>

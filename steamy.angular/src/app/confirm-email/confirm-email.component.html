@@ -1,0 +1,12 @@
+<div *ngIf="success === true">
+<h1>Email confirmed successfully!</h1>
+<p>You can now log in to your account.</p>
+</div>
+<div *ngIf="success === false">
+<h1>Something went wrong.</h1>
+<p>Please try again or contact support if the problem persists.</p>
+</div>
+<div *ngIf="success === null">
+<h1>Confirming your email...</h1>
+</div>
+  
