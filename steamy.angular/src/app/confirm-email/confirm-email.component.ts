@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm-email',
@@ -10,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class ConfirmEmailComponent implements OnInit {
   success: boolean | null = null;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     const userId = this.route.snapshot.queryParamMap.get('userId');
@@ -21,6 +22,9 @@ export class ConfirmEmailComponent implements OnInit {
         .subscribe(
           () => {
             this.success = true;
+            setTimeout(() => {
+              this.router.navigate(['/dashboard']);
+            }, 3000); // Redirect after 3 seconds
           },
           () => {
             this.success = false;

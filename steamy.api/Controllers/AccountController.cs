@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using steamy.api.Models;
 using steamy.api.Services;
 
@@ -85,6 +89,41 @@ namespace steamy.api.Controllers
 
             return Ok("Email confirmed successfully.");
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] Login model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
+
+                if (result.Succeeded)
+                {
+                    // Generate an authentication token for the user
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var key = Encoding.ASCII.GetBytes("<your-secret-key>"); // Replace with your secret key
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim(ClaimTypes.Name, model.Email)
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(7),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var token = tokenHandler.CreateToken(tokenDescriptor);
+                    var tokenString = tokenHandler.WriteToken(token);
+
+                    return Ok(new { token = tokenString });
+                }
+                else
+                {
+                    return BadRequest("Invalid login attempt.");
+                }
+            }
+
+    return BadRequest(ModelState);
+}
 
     }
 }

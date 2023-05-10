@@ -25,6 +25,18 @@ export class SteamApiService {
   getFlagEmoji(countryCode: string): string {
     return countryCode.toLowerCase();
   }
+  getUserGameLibrary(steamId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/SteamUser/games/${steamId}`);
+  }
+  searchGames(searchQuery: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/SteamGame/search/${searchQuery}`);
+  }
+  getGameDetails(appId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/SteamGame/details/${appId}`);
+  }
+  
+  
+  
   
   
 }

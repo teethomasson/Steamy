@@ -15,9 +15,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
-import { ConfirmemailComponent } from './confirmemail/confirmemail.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,11 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
     NavBarComponent,
     SignUpComponent,
     VerifyEmailComponent,
-    ConfirmemailComponent,
-    ConfirmEmailComponent
+    ConfirmEmailComponent,
+    ConfirmEmailComponent,
+    DashboardComponent,
+    LoginComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,7 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
     MatInputModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
