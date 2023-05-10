@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using steamy.api.Models;
 using steamy.api.Data;
 using Microsoft.AspNetCore.Identity;
+using steamy.api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,7 +43,12 @@ builder.Services.Configure<IdentityOptions>(options =>
         options.Password.RequireUppercase = true;
         options.Password.RequireLowercase = true;
     });
-
+builder.Services.AddSingleton(x => new EmailService(
+    smtpServer: builder.Configuration["Email:SmtpServer"],
+    smtpPort: int.Parse(builder.Configuration["Email:SmtpPort"]),
+    email: builder.Configuration["Email:Email"],
+    password: builder.Configuration["Email:Password"]
+));
 
 var app = builder.Build();
 

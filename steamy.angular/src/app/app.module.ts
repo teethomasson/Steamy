@@ -13,13 +13,26 @@ import { MatButtonModule } from '@angular/material/button';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     NavBarComponent,
-    SignUpComponent
+    SignUpComponent,
+    VerifyEmailComponent,
+    ConfirmEmailComponent,
+    ConfirmEmailComponent,
+    DashboardComponent,
+    LoginComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +43,10 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
