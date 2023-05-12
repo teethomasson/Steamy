@@ -1,47 +1,73 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #33333300;
-    padding: 1rem;
-  }
-  
-  .navbar-brand {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5rem;
-  }
-  
-  .nav-items {
-    display: flex;
-  }
-  
-  .nav-item {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 1rem;
-  }
-  
-  .auth-buttons {
-    display: flex;
-  }
-  
-  .signup-button,
-  .login-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 0 4px;
-    cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 4px;
-  }
-  
-  .login-button {
-    background-color: #008CBA;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #33333300;
+  padding: 1rem;
+}
+
+.navbar-brand {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.nav-items {
+  display: flex;
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+.auth-buttons {
+  display: flex;
+  align-items: right;
+}
+
+.signup-button,
+.login-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 4px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.login-button {
+  background-color: #008CBA;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: inline-block;
+  position: relative;
+}
+
+li ul {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+li ul li {
+  display: block;
+}
+
+li:hover ul {
+  display: block;
+}

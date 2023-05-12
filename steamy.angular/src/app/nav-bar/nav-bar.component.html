@@ -1,13 +1,24 @@
-<nav class="navbar">
-    <a class="navbar-brand" routerLink="/">Game Notes</a>
-    <div class="nav-items">
-      <a routerLink="/page1" class="nav-item">Page 1</a>
-      <a routerLink="/page2" class="nav-item">Page 2</a>
-      <!-- Add more nav items as needed -->
-    </div>
-    <div class="auth-buttons">
-      <button class="signup-button" (click)="openSignUpDialog()">Sign Up</button>
+<nav>
+  <h1>Game Notes</h1>
+  <ul>
+    <li *ngIf="!isLoggedIn">
+      <button (click)="openSignUpDialog()">Sign Up</button>
+    </li>
+    <li *ngIf="!isLoggedIn">
       <button (click)="navigateToLogin()">Login</button>
-    </div>
-  </nav>
-  
+    </li>
+    <li *ngIf="isLoggedIn">
+      <button>
+        Account
+      </button>
+      <ul>
+        <li>
+          <a href="#">Account</a>
+        </li>
+        <li>
+          <a href="#">Settings</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
