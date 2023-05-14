@@ -1,24 +1,29 @@
-<nav>
-  <h1>Game Notes</h1>
-  <ul>
-    <li *ngIf="!isLoggedIn">
-      <button (click)="openSignUpDialog()">Sign Up</button>
-    </li>
-    <li *ngIf="!isLoggedIn">
-      <button (click)="navigateToLogin()">Login</button>
-    </li>
-    <li *ngIf="isLoggedIn">
-      <button>
-        Account
-      </button>
-      <ul>
-        <li>
-          <a href="#">Account</a>
-        </li>
-        <li>
-          <a href="#">Settings</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
+<nav class="navbar">
+  <h1 id="brand" class="navbar-brand">Game Notes</h1>
+  <div class="nav-items">
+    <ul *ngIf="!isLoggedIn">
+      <li>
+        <button class="signup-button auth-buttons" (click)="openSignUpDialog()">Sign Up</button>
+      </li>
+      <li>
+        <button class="login-button auth-buttons" (click)="navigateToLogin()">Login</button>
+      </li>
+    </ul>
+    <ul *ngIf="isLoggedIn">
+      <li>
+        <i class="material-icons">settings</i>
+        <ul>
+          <li>
+            <a href="#">Account</a>
+          </li>
+          <li>
+            <a href="#">Settings</a>
+          </li>
+          <li>
+            <a href="#">Logout</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </nav>

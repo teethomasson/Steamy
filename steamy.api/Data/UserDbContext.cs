@@ -12,6 +12,8 @@ namespace steamy.api.Data
         {
         }
 
+        public DbSet<Note> Notes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -23,6 +25,12 @@ namespace steamy.api.Data
                 .HasForeignKey(ur => ur.UserId)
                 .IsRequired();
 
+            // Configure the Notes relationship
+            builder.Entity<User>()
+                .HasMany(u => u.Notes)
+                .WithOne(n => n.User)
+                .HasForeignKey(n => n.UserId)
+                .IsRequired();
         }
     }
 }

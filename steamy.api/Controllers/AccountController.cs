@@ -21,12 +21,14 @@ namespace steamy.api.Controllers
             private readonly UserManager<User> _userManager;
             private readonly SignInManager<User> _signInManager;
             private readonly EmailService _emailService;
+            private readonly IConfiguration _configuration;
 
-            public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, EmailService emailService)
+            public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, EmailService emailService, IConfiguration configuration)
             {
                 _userManager = userManager;
                 _signInManager = signInManager;
                 _emailService = emailService;
+                _configuration = configuration;
             }
 
         [HttpPost("register")]
@@ -101,7 +103,7 @@ namespace steamy.api.Controllers
                 {
                     // Generate an authentication token for the user
                     var tokenHandler = new JwtSecurityTokenHandler();
-                    var key = Encoding.ASCII.GetBytes("<your-secret-key>"); // Replace with your secret key
+                    var key = Encoding.ASCII.GetBytes(_configuration["App:pKey"]); 
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {
                         Subject = new ClaimsIdentity(new Claim[]

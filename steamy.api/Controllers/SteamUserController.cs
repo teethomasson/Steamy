@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Steam.Models.SteamCommunity;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 namespace steamy.api.Controllers
 {
@@ -117,6 +120,17 @@ public class SteamUserController : ControllerBase
             return BadRequest(new { error = e.Message });
         }
     }
+
+    [HttpGet("/signin")]
+    [AllowAnonymous]
+    public IActionResult SignInSteam()
+    {
+        // Request a redirect to the external login provider
+        var redirectUrl = Url.Action("Index", "Home");
+        var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+        return Challenge(properties, OpenIdConnectDefaults.AuthenticationScheme);
+    }
+
 
 }
 }
