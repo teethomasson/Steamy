@@ -38,9 +38,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       },
       (error) => {
-        // Show an error message if the authentication fails
         console.error('Authentication failed');
       }
     );
   }
+  
 }

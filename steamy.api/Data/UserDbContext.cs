@@ -13,6 +13,8 @@ namespace steamy.api.Data
         }
 
         public DbSet<Note> Notes { get; set; }
+        public DbSet<Game> Games {get;set;}
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

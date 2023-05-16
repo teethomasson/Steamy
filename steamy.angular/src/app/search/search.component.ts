@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SteamApiService } from '../steam-api-service';
+import { SteamApiService } from '../Services/steam-api-service';
 import { filter, switchMap, tap } from 'rxjs';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 

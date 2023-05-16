@@ -16,20 +16,20 @@ namespace steamy.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-        public class AccountController : ControllerBase
-        {
-            private readonly UserManager<User> _userManager;
-            private readonly SignInManager<User> _signInManager;
-            private readonly EmailService _emailService;
-            private readonly IConfiguration _configuration;
+    public class AccountController : ControllerBase
+    {
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly EmailService _emailService;
+        private readonly IConfiguration _configuration;
 
-            public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, EmailService emailService, IConfiguration configuration)
-            {
-                _userManager = userManager;
-                _signInManager = signInManager;
-                _emailService = emailService;
-                _configuration = configuration;
-            }
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, EmailService emailService, IConfiguration configuration)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _emailService = emailService;
+            _configuration = configuration;
+        }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] Register model)
@@ -124,8 +124,8 @@ namespace steamy.api.Controllers
                 }
             }
 
-    return BadRequest(ModelState);
-}
+            return BadRequest(ModelState);
+        }
 
     }
 }

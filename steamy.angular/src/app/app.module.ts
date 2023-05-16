@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatCardModule } from '@angular/material/card';
+import { NotesBarComponent } from './notes-bar/notes-bar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatCardModule } from '@angular/material/card';
     ConfirmEmailComponent,
     DashboardComponent,
     LoginComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    NotesBarComponent
   ],
   imports: [
     BrowserModule,
