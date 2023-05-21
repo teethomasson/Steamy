@@ -28,6 +28,7 @@ builder.Services.AddDbContext<UserDbContext>(options =>
         options.UseSqlServer(builder.Configuration["App:DBKey"]));
 builder.Services.AddSingleton<steamy.api.SteamUserService>();
 builder.Services.AddMemoryCache();
+builder.Services.AddHttpClient(); 
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(

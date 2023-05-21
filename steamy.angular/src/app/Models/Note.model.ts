@@ -1,8 +1,9 @@
 export class Note {
-    id: string = '';
-    content: string = '';
-    gameId: string = '';
-    gameImageUrl: string = '';
+    id?: string = '';
+    title: string = '';
+    content?: string;
+    gameId?: string;
+    gameImageUrl?: string = '';
     lastModified: Date = new Date();
   }
   

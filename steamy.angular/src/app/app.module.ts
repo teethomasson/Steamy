@@ -22,6 +22,8 @@ import { AuthService } from './auth.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatCardModule } from '@angular/material/card';
 import { NotesBarComponent } from './notes-bar/notes-bar.component';
+import { NoteDialogComponent } from './notes-dialog/notes-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { NotesBarComponent } from './notes-bar/notes-bar.component';
     DashboardComponent,
     LoginComponent,
     LandingPageComponent,
-    NotesBarComponent
+    NotesBarComponent,
+    NoteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { NotesBarComponent } from './notes-bar/notes-bar.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

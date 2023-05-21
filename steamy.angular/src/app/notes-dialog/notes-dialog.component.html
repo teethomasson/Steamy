@@ -1,0 +1,35 @@
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="noteForm">
+    <mat-form-field>
+      <mat-label>Note Title</mat-label>
+      <input matInput formControlName="noteTitle">
+    </mat-form-field>
+
+    <div *ngIf="!noteForm.controls['selectedGame'].value">
+      <mat-form-field>
+        <mat-label>Search for Game</mat-label>
+        <input matInput formControlName="gameQuery" (keyup.enter)="searchGames()">
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="noteForm.controls['selectedGame'].value">
+      <button mat-icon-button (click)="deselectGame()"><mat-icon>clear</mat-icon></button>
+      <img [src]="noteForm.controls['selectedGame'].value.background_image" alt="Game image" width="50" height="50">
+      <span>{{ noteForm.controls['selectedGame'].value.name }}</span>
+    </div>
+    
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button (click)="saveNote()">Create</button>
+    </mat-dialog-actions>
+
+  </form>
+
+  <div *ngIf="games && !noteForm.controls['selectedGame'].value">
+    <div *ngFor="let game of games.results">
+      <img [src]="game.background_image" alt="Game image" width="50" height="50">
+      <span>{{ game.name }}</span>
+      <button mat-button (click)="selectGame(game)">Select</button>
+    </div>
+  </div>
+</mat-dialog-content>

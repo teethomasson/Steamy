@@ -1,6 +1,9 @@
+import { NoteDialogComponent } from './../notes-dialog/notes-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../Services/note-service';
 import { Note } from '../Models/Note.model';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-notes-bar',
@@ -10,7 +13,7 @@ import { Note } from '../Models/Note.model';
 export class NotesBarComponent {
   notes: Note[] = [];
 
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.noteService.getNotes().subscribe(
@@ -18,4 +21,18 @@ export class NotesBarComponent {
       error => console.error(error)
     );
   }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(NoteDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => 
+    {
+      if (result) 
+      {
+        this.noteService.createNote(result).subscribe(newNote => {
+          this.notes.push(newNote);
+        });
+      }
+    });
+  }
+
 }
