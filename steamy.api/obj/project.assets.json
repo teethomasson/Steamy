@@ -2,6 +2,59 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "AngleSharp/0.13.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AngleSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/AngleSharp.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "AspNet.Security.OpenId/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "AngleSharp": "0.13.0",
+          "Microsoft.IdentityModel.Protocols": "6.10.0",
+          "System.Text.Json": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/AspNet.Security.OpenId.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/AspNet.Security.OpenId.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "AspNet.Security.OpenId.Steam/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "AspNet.Security.OpenId": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/AspNet.Security.OpenId.Steam.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/AspNet.Security.OpenId.Steam.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "AutoMapper/12.0.0": {
         "type": "package",
         "dependencies": {
@@ -103,6 +156,25 @@
             "related": ".dll.config;.pdb;.xml"
           }
         }
+      },
+      "Microsoft.AspNetCore.Authentication.OpenIdConnect/7.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.15.1"
+        },
+        "compile": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Microsoft.AspNetCore.Cryptography.Internal/7.0.5": {
         "type": "package",
@@ -1465,6 +1537,51 @@
     }
   },
   "libraries": {
+    "AngleSharp/0.13.0": {
+      "sha512": "VaKQ7kLfjSXRlRys1vX5zlFUOHgF72kCVm5YZjzZwuAoOglQpsMyeavXMYrHGliqovk2yp/Cq7F/xDXJw6bBDQ==",
+      "type": "package",
+      "path": "anglesharp/0.13.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "anglesharp.0.13.0.nupkg.sha512",
+        "anglesharp.nuspec",
+        "lib/net46/AngleSharp.dll",
+        "lib/net46/AngleSharp.xml",
+        "lib/netstandard1.3/AngleSharp.dll",
+        "lib/netstandard1.3/AngleSharp.xml",
+        "lib/netstandard2.0/AngleSharp.dll",
+        "lib/netstandard2.0/AngleSharp.xml"
+      ]
+    },
+    "AspNet.Security.OpenId/7.0.0": {
+      "sha512": "lnsfTCUWm4qjBsMyF/fw4GLgB231q2T6oWoXxGcU5Hhc/sYysa/KSHFZ4jwbRU085hahsd7rM7w33WfKaSqVJQ==",
+      "type": "package",
+      "path": "aspnet.security.openid/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "aspnet.security.openid.7.0.0.nupkg.sha512",
+        "aspnet.security.openid.nuspec",
+        "lib/net7.0/AspNet.Security.OpenId.dll",
+        "lib/net7.0/AspNet.Security.OpenId.xml"
+      ]
+    },
+    "AspNet.Security.OpenId.Steam/7.0.0": {
+      "sha512": "ivs4GhgWRMkEPLwGZWXha3DQ7U6eoQnde3AC8LESAHnyiKy2RbUo+0xghDQzXC16Z9wvby5Rlc0co9+ZPHijvA==",
+      "type": "package",
+      "path": "aspnet.security.openid.steam/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "aspnet.security.openid.steam.7.0.0.nupkg.sha512",
+        "aspnet.security.openid.steam.nuspec",
+        "lib/net7.0/AspNet.Security.OpenId.Steam.dll",
+        "lib/net7.0/AspNet.Security.OpenId.Steam.xml"
+      ]
+    },
     "AutoMapper/12.0.0": {
       "sha512": "0Rmg0zI5AFu1O/y//o9VGyhxKjhggWpk9mOA1tp0DEVx40c61bs+lnQv+0jUq8XbniF7FKgIVvI1perqiMtLrA==",
       "type": "package",
@@ -1590,6 +1707,21 @@
         "lib/netstandard2.1/MailKit.xml",
         "mailkit.4.0.0.nupkg.sha512",
         "mailkit.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.OpenIdConnect/7.0.5": {
+      "sha512": "mpDo9uDsl2Ere26+Cl2vl3eaqirSD6QbzZltW4jP+jay9mZfi+P5hKQ9Sg+TwiotmpyBpRyGVDxVmEkoE+t6jA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.openidconnect/7.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.xml",
+        "microsoft.aspnetcore.authentication.openidconnect.7.0.5.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.openidconnect.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/7.0.5": {
@@ -4226,6 +4358,8 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "AspNet.Security.OpenId.Steam >= 7.0.0",
+      "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 7.0.5",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.5",
       "Microsoft.AspNetCore.OpenApi >= 7.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
@@ -4274,6 +4408,14 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "AspNet.Security.OpenId.Steam": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
+            "target": "Package",
+            "version": "[7.0.5, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[7.0.5, )"

@@ -20,6 +20,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MatCardModule } from '@angular/material/card';
+import { NotesBarComponent } from './notes-bar/notes-bar.component';
+import { NoteDialogComponent } from './notes-dialog/notes-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     ConfirmEmailComponent,
     DashboardComponent,
     LoginComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    NotesBarComponent,
+    NoteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatIconModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -89,3 +89,7 @@ C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\runtimes\win\lib\
 C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
 C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\MailKit.dll
 C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\MimeKit.dll
+C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\AngleSharp.dll
+C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\AspNet.Security.OpenId.dll
+C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\AspNet.Security.OpenId.Steam.dll
+C:\Users\Scurv\source\repos\Steamy\steamy.api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll

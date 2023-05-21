@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "steamy.api/1.0.0": {
         "dependencies": {
+          "AspNet.Security.OpenId.Steam": "7.0.0",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "7.0.5",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.5",
           "Microsoft.AspNetCore.OpenApi": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
@@ -18,6 +20,41 @@
         },
         "runtime": {
           "steamy.api.dll": {}
+        }
+      },
+      "AngleSharp/0.13.0": {
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AngleSharp.dll": {
+            "assemblyVersion": "0.13.0.0",
+            "fileVersion": "0.13.0.0"
+          }
+        }
+      },
+      "AspNet.Security.OpenId/7.0.0": {
+        "dependencies": {
+          "AngleSharp": "0.13.0",
+          "Microsoft.IdentityModel.Protocols": "6.21.0",
+          "System.Text.Json": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/AspNet.Security.OpenId.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.55779"
+          }
+        }
+      },
+      "AspNet.Security.OpenId.Steam/7.0.0": {
+        "dependencies": {
+          "AspNet.Security.OpenId": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/AspNet.Security.OpenId.Steam.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.55779"
+          }
         }
       },
       "AutoMapper/12.0.0": {
@@ -89,6 +126,17 @@
           "lib/net6.0/MailKit.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.OpenIdConnect/7.0.5": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.21.0"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
+            "assemblyVersion": "7.0.5.0",
+            "fileVersion": "7.0.523.17410"
           }
         }
       },
@@ -822,6 +870,27 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AngleSharp/0.13.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VaKQ7kLfjSXRlRys1vX5zlFUOHgF72kCVm5YZjzZwuAoOglQpsMyeavXMYrHGliqovk2yp/Cq7F/xDXJw6bBDQ==",
+      "path": "anglesharp/0.13.0",
+      "hashPath": "anglesharp.0.13.0.nupkg.sha512"
+    },
+    "AspNet.Security.OpenId/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lnsfTCUWm4qjBsMyF/fw4GLgB231q2T6oWoXxGcU5Hhc/sYysa/KSHFZ4jwbRU085hahsd7rM7w33WfKaSqVJQ==",
+      "path": "aspnet.security.openid/7.0.0",
+      "hashPath": "aspnet.security.openid.7.0.0.nupkg.sha512"
+    },
+    "AspNet.Security.OpenId.Steam/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ivs4GhgWRMkEPLwGZWXha3DQ7U6eoQnde3AC8LESAHnyiKy2RbUo+0xghDQzXC16Z9wvby5Rlc0co9+ZPHijvA==",
+      "path": "aspnet.security.openid.steam/7.0.0",
+      "hashPath": "aspnet.security.openid.steam.7.0.0.nupkg.sha512"
+    },
     "AutoMapper/12.0.0": {
       "type": "package",
       "serviceable": true,
@@ -863,6 +932,13 @@
       "sha512": "sha512-vtP6nUU0ByEZTnpbtsfdxyRvcssNSgIml4zi2hpBOV4gYNoaYSt+4VCx28MMnfaO/9J1IzcG+Hc8kXMkWX6iRQ==",
       "path": "mailkit/4.0.0",
       "hashPath": "mailkit.4.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.OpenIdConnect/7.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mpDo9uDsl2Ere26+Cl2vl3eaqirSD6QbzZltW4jP+jay9mZfi+P5hKQ9Sg+TwiotmpyBpRyGVDxVmEkoE+t6jA==",
+      "path": "microsoft.aspnetcore.authentication.openidconnect/7.0.5",
+      "hashPath": "microsoft.aspnetcore.authentication.openidconnect.7.0.5.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/7.0.5": {
       "type": "package",
