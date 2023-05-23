@@ -12,10 +12,10 @@ export class NoteService {
   constructor(private http: HttpClient) { }
 
   getNotes(): Observable<Note[]> {
-    return this.http.get<Note[]>(this.apiUrl);
+    return this.http.get<Note[]>(this.apiUrl, {withCredentials: true});
   }
 
   createNote(note: Note): Observable<Note> {
-    return this.http.post<Note>(`${this.apiUrl}/notes`, note);
+    return this.http.post<Note>(`${this.apiUrl}`, note, {withCredentials: true});
   }
 }

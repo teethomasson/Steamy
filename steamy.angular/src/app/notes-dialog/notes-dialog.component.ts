@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Note } from '../Models/Note.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GameService } from '../Services/game-service';
+import { NoteService } from '../Services/note-service';
 
 
 @Component({
@@ -18,24 +19,27 @@ export class NoteDialogComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<NoteDialogComponent>,
-    private gameService: GameService
+    private gameService: GameService,
+    private noteService: NoteService
   ) {}
 
   ngOnInit(): void {
     this.noteForm = this.formBuilder.group({
-      notetitle: ['', Validators.required],
+      noteTitle: ['', Validators.required],
       gameQuery: [''],
       selectedGame: ['']
     });
   }
 
-  searchGames(): void {
+  searchGames(event: any): void {
+    const keyboardEvent = event as KeyboardEvent;
+    keyboardEvent.preventDefault();
     const query = this.noteForm.value.gameQuery;
     this.gameService.searchGames(query).subscribe(results => {
       this.games = results;
     });
   }
-
+  
   
   selectGame(game: any): void {
     this.noteForm.controls['selectedGame'].setValue(game);
@@ -44,10 +48,10 @@ export class NoteDialogComponent implements OnInit {
   saveNote() {
     if (this.noteForm.valid) {
       const newNote: Note = {
-        title: this.noteForm.get('notetitle')?.value,
+        title: this.noteForm.get('noteTitle')?.value,
         gameId: this.noteForm.get('selectedGame')?.value.id, 
         lastModified: new Date()
-      };      
+      }; 
       this.dialogRef.close(newNote);
     }
   }
