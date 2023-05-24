@@ -10,9 +10,9 @@ using steamy.api.Models;
 
 namespace steamy.api.Controllers
 {
-    [Authorize]
-[Route("api/[controller]")]
+[Authorize]
 [ApiController]
+[Route("api/[controller]")]
 public class NotesController : ControllerBase
 {
     private readonly UserDbContext _context;
@@ -71,6 +71,7 @@ public class NotesController : ControllerBase
 
         try
         {
+            note.UpdatedAt = DateTime.UtcNow;
             await _context.SaveChangesAsync();
         }
         catch (DbUpdateConcurrencyException)
@@ -93,9 +94,8 @@ public class NotesController : ControllerBase
     public async Task<ActionResult<Note>> PostNote(Note note)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
-
-        note.UserId = userId;
-
+        note.CreatedAt = DateTime.UtcNow;
+        note.UpdatedAt = DateTime.UtcNow;
         _context.Notes.Add(note);
         await _context.SaveChangesAsync();
 

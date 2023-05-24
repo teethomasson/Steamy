@@ -5,7 +5,8 @@ import { Note } from '../Models/Note.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GameService } from '../Services/game-service';
 import { NoteService } from '../Services/note-service';
-
+import { AuthService } from '../auth.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-notes-dialog',
@@ -20,7 +21,8 @@ export class NoteDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<NoteDialogComponent>,
     private gameService: GameService,
-    private noteService: NoteService
+    private noteService: NoteService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -47,11 +49,17 @@ export class NoteDialogComponent implements OnInit {
 
   saveNote() {
     if (this.noteForm.valid) {
+      const token = this.authService.getToken();
+      const decodedToken = jwt_decode<JwtPayload>(token);
+      const userId = decodedToken.nameid;
+      console.log(userId)
       const newNote: Note = {
         title: this.noteForm.get('noteTitle')?.value,
-        gameId: this.noteForm.get('selectedGame')?.value.id, 
-        lastModified: new Date()
+        RawgGameId: this.noteForm.get('selectedGame')?.value.RawgGameId,
+        lastModified: new Date(),
+        userId: userId 
       }; 
+  
       this.dialogRef.close(newNote);
     }
   }
@@ -64,6 +72,10 @@ export class NoteDialogComponent implements OnInit {
     this.noteForm.controls['selectedGame'].setValue(null);
     this.noteForm.controls['gameQuery'].setValue('');
   }
+
   
-  
+}
+interface JwtPayload {
+  unique_name: string;
+  nameid: string;
 }
