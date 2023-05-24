@@ -7,4 +7,3 @@ A standout feature of Steamy is the ability to create personalized notes for eac
 
 Steamy is engineered using cutting-edge technologies, including ASP.NET Core for the robust backend and Angular for the dynamic frontend. The application leverages Entity Framework Core for efficient data access and Identity for secure user management. With a strong emphasis on security and performance, Steamy implements JWT authentication and optimizes API calls to ensure a smooth user experience.
 
-Developing Steamy has been an enriching journey, allowing me to delve deeper into web development and work with intriguing APIs. The challenge of integrating with the Steam and RAWG APIs and crafting a user-friendly interface for gamers has been rewarding. I take immense pride in the strides I've made with Steamy and look forward to continually refining and expanding the application to cater to the evolving needs of gamers.
