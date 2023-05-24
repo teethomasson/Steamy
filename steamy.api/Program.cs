@@ -7,17 +7,16 @@ using steamy.api.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using AspNet.Security.OpenId.Steam;
 using AspNet.Security.OpenId;
-
 using Microsoft.Extensions.DependencyInjection;
 using steamy.api;
 using System.Security.Claims;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 ;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -36,7 +35,9 @@ builder.Services.AddCors(options =>
         {
             builder.WithOrigins("http://localhost:4200") // Angular app URL
                    .AllowAnyHeader()
-                   .AllowAnyMethod();
+                   .AllowAnyMethod()
+                   .WithMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                   .AllowCredentials();
         });
 });
 
@@ -63,11 +64,20 @@ builder.Services.AddSingleton(x => new EmailService(
 
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = OpenIdAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-.AddCookie()
+.AddJwtBearer(options =>
+{
+    var key = Encoding.ASCII.GetBytes(builder.Configuration["App:pKey"]);
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+})
 .AddSteam(options =>
 {
     options.ApplicationKey = builder.Configuration["App:ApiKey"];
@@ -88,6 +98,7 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
+app.UseRouting();
 app.UseCors();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -18,14 +18,20 @@ export class AuthService {
     return this.http.post('http://localhost:5140/account/login', loginData).pipe(
       tap((response: any) => {
         // Save the authentication token
-        sessionStorage.setItem('auth_token', response.token);
+        localStorage.setItem('token', response.token);
         this.loggedIn.next(true); // Update loggedIn status
       })
     );
   }
 
   logout() {
-    sessionStorage.removeItem('auth_token'); // Remove the authentication token
+    sessionStorage.removeItem('token'); 
     this.loggedIn.next(false);
+  }
+
+  getToken(): string {
+    const token = localStorage.getItem('token') || '';
+    console.log(token); // Log the retrieved token
+    return token;
   }
 }

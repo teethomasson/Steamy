@@ -28,6 +28,7 @@ export class NotesBarComponent {
     {
       if (result) 
       {
+        console.log(result);
         this.noteService.createNote(result).subscribe(newNote => {
           this.notes.push(newNote);
         });
