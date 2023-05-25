@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./tool-bar.component.css']
 })
 export class ToolBarComponent {
-  constructor()
+
 }
