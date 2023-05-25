@@ -4,7 +4,7 @@ export class Note {
     content?: string;
     RawgGameId?: string;
     gameImageUrl?: string = '';
-    lastModified: Date = new Date();
+    updatedAt: Date = new Date();
     userId?: string;
   }
   

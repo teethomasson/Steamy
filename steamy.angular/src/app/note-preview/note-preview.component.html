@@ -1,0 +1,13 @@
+<div class="note" (click)="editNote()">
+  <div class="game-image" *ngIf="note.gameImageUrl; else noImage">
+    <img [src]="note.gameImageUrl" alt="Game Image">
+  </div>
+  <ng-template #noImage>
+    <div class="game-image"></div>
+  </ng-template>
+    <div class="note-details">
+      <h2 class="note-title">{{ note.title }}</h2>
+      <h3 class="note-date">Last updated: {{ note.updatedAt}}</h3>
+      <p>{{ note.RawgGameId }}</p>
+    </div>
+  </div>

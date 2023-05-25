@@ -14,7 +14,7 @@
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    margin-bottom: 1rem;
+    margin-bottom: 10rem;
     padding: 8px;
     cursor: pointer;
     border-radius: 4px;
@@ -26,3 +26,5 @@
     margin-bottom: 8px;
     cursor: pointer;
   }
+
+  
