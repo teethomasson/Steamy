@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,EventEmitter,Output } from '@angular/core';
 
 
 @Component({
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./tool-bar.component.css']
 })
 export class ToolBarComponent {
+  @Output() textboxModeActivated = new EventEmitter();
 
+  activateTextboxMode() {
+    this.textboxModeActivated.emit();
+  }
 }
