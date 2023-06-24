@@ -24,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NotesBarComponent } from './notes-bar/notes-bar.component';
 import { NoteDialogComponent } from './notes-dialog/notes-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatIconModule } from '@angular/material/icon';
     LoginComponent,
     LandingPageComponent,
     NotesBarComponent,
-    NoteDialogComponent
+    NoteDialogComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
