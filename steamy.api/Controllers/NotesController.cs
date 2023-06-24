@@ -22,12 +22,12 @@ public class NotesController : ControllerBase
         _context = context;
     }
 
-    // GET: api/Notes
+    // GET: api/Notes/userId
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Note>>> GetNotes()
+    public async Task<ActionResult<IEnumerable<Note>>> GetNotes([FromQuery] string? userId)
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
-        return await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
+        var notes = await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
+        return notes;
     }
 
     // GET: api/Notes/5

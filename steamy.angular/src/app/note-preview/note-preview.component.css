@@ -1,0 +1,40 @@
+.note{
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 1px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    background-color: lightgray;
+  }
+  
+  .note img {
+    width: 100px; /* adjust as needed */
+    height: 100px; /* adjust as needed */
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: gray;
+  }
+  
+  .note .note-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .note .note-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-left: 5px;
+  }
+  
+  .note .note-date {
+    font-size: 0.8em;
+    color: #777;
+  }
+
+  
+  

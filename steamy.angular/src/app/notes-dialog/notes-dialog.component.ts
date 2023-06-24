@@ -7,6 +7,7 @@ import { GameService } from '../Services/game-service';
 import { NoteService } from '../Services/note-service';
 import { AuthService } from '../auth.service';
 import jwt_decode from 'jwt-decode';
+import { JwtPayload } from '../Interfaces/JwtPayload';
 
 @Component({
   selector: 'app-notes-dialog',
@@ -42,7 +43,7 @@ export class NoteDialogComponent implements OnInit {
     });
   }
   
-  
+ 
   selectGame(game: any): void {
     this.noteForm.controls['selectedGame'].setValue(game);
   }
@@ -52,11 +53,11 @@ export class NoteDialogComponent implements OnInit {
       const token = this.authService.getToken();
       const decodedToken = jwt_decode<JwtPayload>(token);
       const userId = decodedToken.nameid;
-      console.log(userId)
       const newNote: Note = {
         title: this.noteForm.get('noteTitle')?.value,
-        RawgGameId: this.noteForm.get('selectedGame')?.value.RawgGameId,
-        lastModified: new Date(),
+        RawgGameId: this.noteForm.get('selectedGame')?.value.id,
+        gameImageUrl: this.noteForm.get('selectedGame')?.value.background_image,
+        updatedAt: new Date(),
         userId: userId 
       }; 
   
@@ -74,8 +75,4 @@ export class NoteDialogComponent implements OnInit {
   }
 
   
-}
-interface JwtPayload {
-  unique_name: string;
-  nameid: string;
 }

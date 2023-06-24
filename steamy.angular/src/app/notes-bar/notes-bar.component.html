@@ -1,8 +1,6 @@
 <div class="sidebar">
     <button mat-raised-button (click)="openDialog()">New Note</button>
-    <div *ngFor="let note of notes">
-      <h2>{{ note.RawgGameId }}</h2>
-      <p>{{ note.content }}</p>
-    </div>
-    
+    <app-note-preview 
+  *ngFor="let note of notes" 
+  [note]="note"></app-note-preview>
   </div>

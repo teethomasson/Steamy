@@ -4,12 +4,14 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
+import { NoteEditorComponent } from './note-editor/note-editor.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'note-editor/:id', component: NoteEditorComponent },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'user-profile', component: UserProfileComponent}
 ];

@@ -1,0 +1,8 @@
+<mat-drawer-container class="container" autosize>
+    <mat-drawer mode="side" opened>
+      <app-tool-bar (textboxModeActivated)="activateTextboxMode()"></app-tool-bar>
+    </mat-drawer>
+    <mat-drawer-content>
+      <canvas #canvasElement></canvas>
+    </mat-drawer-content>
+  </mat-drawer-container>
