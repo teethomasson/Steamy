@@ -23,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NotesBarComponent } from './notes-bar/notes-bar.component';
 import { NoteDialogComponent } from './notes-dialog/notes-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
+<<<<<<< HEAD
 import { NotePreviewComponent } from './note-preview/note-preview.component';
 import { NoteEditorComponent } from './note-editor/note-editor.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -32,6 +33,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { AuthService } from './auth.service';
 import { NoteService } from '../app/Services/note-service';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
+=======
+import { UserProfileComponent } from './user-profile/user-profile.component';
+>>>>>>> 6a6cef3775fb4d60d2b1646ad6bac80530b01e84
 
 @NgModule({
   declarations: [
@@ -47,9 +51,13 @@ import { ToolBarComponent } from './tool-bar/tool-bar.component';
     LandingPageComponent,
     NotesBarComponent,
     NoteDialogComponent,
+<<<<<<< HEAD
     NotePreviewComponent,
     NoteEditorComponent,
     ToolBarComponent
+=======
+    UserProfileComponent
+>>>>>>> 6a6cef3775fb4d60d2b1646ad6bac80530b01e84
   ],
   imports: [
     BrowserModule,

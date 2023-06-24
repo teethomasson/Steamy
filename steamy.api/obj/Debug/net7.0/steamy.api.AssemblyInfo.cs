@@ -10,7 +10,7 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("3ac229fd-94b9-4f27-a1f4-8e4ebd3b9511")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("b47791ca-56a4-47ca-a6c4-e7fbca136a0e")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("steamy.api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
