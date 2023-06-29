@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\Steamy\\steamy.api\\steamy.api.csproj": {}
+    "d:\\repos\\Steamy\\steamy.api\\steamy.api.csproj": {}
   },
   "projects": {
-    "D:\\repos\\Steamy\\steamy.api\\steamy.api.csproj": {
+    "d:\\repos\\Steamy\\steamy.api\\steamy.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\Steamy\\steamy.api\\steamy.api.csproj",
+        "projectUniqueName": "d:\\repos\\Steamy\\steamy.api\\steamy.api.csproj",
         "projectName": "steamy.api",
-        "projectPath": "D:\\repos\\Steamy\\steamy.api\\steamy.api.csproj",
+        "projectPath": "d:\\repos\\Steamy\\steamy.api\\steamy.api.csproj",
         "packagesPath": "C:\\Users\\Scurv\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\Steamy\\steamy.api\\obj\\",
+        "outputPath": "d:\\repos\\Steamy\\steamy.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Scurv\\AppData\\Roaming\\NuGet\\NuGet.Config",

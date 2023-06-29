@@ -22,7 +22,6 @@ export class NoteService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.authService.getToken()}`
     });
-    console.log("Getting Notes for user: ${userId}");
     return this.http.get<Note[]>(`${this.apiUrl}?userId=${userId}`, {headers: headers, withCredentials: true});
   }
 
